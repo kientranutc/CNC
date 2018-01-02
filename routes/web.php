@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', function(){
+    return view('backend.login');
 });
+Route::get('home', function () {
+    return view('backend.index');
+})->name('home');
+
+Route::get('/', function () {
+    return view('backend.index');
+})->name('blog');
