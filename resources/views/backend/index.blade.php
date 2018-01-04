@@ -2,7 +2,7 @@
 @section('title')
 control page
 @endsection
-@section('breadcrumbs', Breadcrumbs::render('blog'))
+@section('breadcrumbs', Breadcrumbs::render('dashboard'))
 @section('content')
 <div class="grey-container shortcut-wrapper">
 				<a href="#" class="shortcut-link">

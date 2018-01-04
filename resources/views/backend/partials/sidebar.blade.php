@@ -19,13 +19,26 @@
 				</div><!-- /user-block -->
 				<div class="main-menu">
 					<ul>
-						<li class="active">
-							<a href="index.html">
+						<li class="{{ (Route::currentRouteName()== 'dashboard.index')?'active':''}}">
+							<a href="{{URL::route('dashboard.index')}}">
 								<span class="menu-icon">
 									<i class="fa fa-desktop fa-lg"></i>
 								</span>
 								<span class="text">
 									Dashboard
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="{{ (Route::currentRouteName()== 'categories.index')
+									|| (Route::currentRouteName()== 'categories.create')
+									?'active':''}}">
+							<a href="{{URL::route('categories.index')}}">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i>
+								</span>
+								<span class="text">
+									Danh mục
 								</span>
 								<span class="menu-hover"></span>
 							</a>
@@ -42,22 +55,6 @@
 							</a>
 							<ul class="submenu">
 								<li><a href="login.html"><span class="submenu-label">Sign in</span></a></li>
-								<li><a href="register.html"><span class="submenu-label">Sign up</span></a></li>
-								<li><a href="lock_screen.html"><span class="submenu-label">Lock Screen</span></a></li>
-								<li><a href="profile.html"><span class="submenu-label">Profile</span></a></li>
-								<li><a href="blog.html"><span class="submenu-label">Blog</span></a></li>
-								<li><a href="single_post.html"><span class="submenu-label">Single Post</span></a></li>
-								<li><a href="landing.html"><span class="submenu-label">Landing</span></a></li>
-								<li><a href="search_result.html"><span class="submenu-label">Search Result</span></a></li>
-								<li><a href="chat.html"><span class="submenu-label">Chat Room</span></a></li>
-								<li><a href="movie.html"><span class="submenu-label">Movie Gallery</span></a></li>
-								<li><a href="pricing.html"><span class="submenu-label">Pricing</span></a></li>
-								<li><a href="invoice.html"><span class="submenu-label">Invoice</span></a></li>
-								<li><a href="faq.html"><span class="submenu-label">FAQ</span></a></li>
-								<li><a href="contact.html"><span class="submenu-label">Contact</span></a></li>
-								<li><a href="error404.html"><span class="submenu-label">Error404</span></a></li>
-								<li><a href="error500.html"><span class="submenu-label">Error500</span></a></li>
-								<li><a href="blank.html"><span class="submenu-label">Blank</span></a></li>
 							</ul>
 						</li>
 						<li class="openable">
@@ -118,18 +115,7 @@
 								<span class="menu-hover"></span>
 							</a>
 						</li>
-						<li>
-							<a href="email_selection.html">
-								<span class="menu-icon">
-									<i class="fa fa-tasks fa-lg"></i>
-								</span>
-								<span class="text">
-									Email Template
-								</span>
-								<small class="badge badge-warning bounceIn animation-delay7">New</small>
-								<span class="menu-hover"></span>
-							</a>
-						</li>
+
 						<li class="openable">
 							<a href="#">
 								<span class="menu-icon">

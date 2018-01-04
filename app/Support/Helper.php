@@ -1,18 +1,20 @@
 <?php
 namespace App\Support;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 
 class Helper{
-  public static function parent($data,$select,$parent = 0, $str="--"){
+  public static function parent($data,$select,$parent = 0, $str=""){
         foreach ($data as $val ){
             $id = $val["id"];
-            $name = $val["categories"];
+            $name = $val["name"];
             if ($val["parent_id"] == $parent){
                 if ($id == $select) {
                     echo "<option value='$id' selected='selected'>$str $name </option>";
                 }else{
                     echo "<option value='$id'> $str $name</option>";
                 }
-                $this->parent ($data,$select,$id,$str."--");
+                self::parent ($data,$select,$id,$str."--|");
             }
         }
     }
@@ -32,62 +34,60 @@ class Helper{
         }
     }
     //parent_add
-    public static function parentAdd($data, $parent = 0, $str="--"){
+    public static function parentAdd($data, $parent = 0, $str=""){
         foreach ($data as $val ){
             $id = $val["id"];
-            $name = $val["categories"];
+            $name = $val["name"];
             if ($val["parent_id"] == $parent){
                 if ($id == old('parent_id')) {
-                    echo "<option value='$id' selected='selected'>$str $name </option>";
+                    echo "<option value='$id' selected='selected'>$name </option>";
                 }else{
-                    echo "<option value='$id'> $str $name</option>";
+                    echo "<option value='$id'> $str$name</option>";
                 }
-                $this->parentAdd($data,$id,$str."--");
+                self::parentAdd($data,$id,$str."--|");
             }
 
         }
     }
-    public static function parentAddMulti($data, $parent = 0, $str="--"){
+    public static function parentAddMulti($data, $parent = 0, $str=""){
         foreach ($data as $val ){
             $id = $val["id"];
-            $name = $val["categories"];
+            $name = $val["name"];
             if ($val["parent_id"] == $parent){
                 if ($id == old('category_id')) {
-                    echo "<option value='$id' selected='selected'>$str $name </option>";
+                    echo "<option value='$id' selected='selected'>$name </option>";
                 }else{
-                    echo "<option value='$id'> $str $name</option>";
+                    echo "<option value='$id'> $str$name</option>";
                 }
-                $this->parentAddMulti($data,$id,$str."--");
+               self::parentAddMulti($data,$id,$str."--|");
             }
 
         }
     }
-    //parent_table
-    public static function parentTable($data, $parent = 0, $str=""){
+
+    public static function parentTableCategories($data, $parent = 0, $str=""){
         $i=1;
         foreach ($data as $val ){
             if ($val->parent_id == $parent){
-                 echo "<tr>";
-                    echo "<td class='text-center'>".$i."</td>";
-                    echo "<td>".$str.$val->categories."</td>";
-                    echo "<td class='text-center'>".$val->menu."</td>";
-                    echo "<td class='text-center'>".$val->description."</td>";
-                    echo "<td class='text-center'>".$val->alias."</td>";
-                    echo "<td class='text-center'>".$val->sort."</td>";
-                    if($val->active==1){
-                          echo "<td class='text-center
-                    '><span style='width:50px' class='btn btn-success'>".Config('constants.active')[$val->active]."</span></td>";
-                    }else{
+                echo "<tr>";
+                echo "<td class='text-center'>".$i."</td>";
+                echo "<td>".$str.$val->name."</td>";
+                echo "<td class='text-center'>".$val->parent_id."</td>";
+                echo "<td class='text-center'>".Config::get('constant.category_type')[$val->category_type]."</td>";
+                if($val->status==1){
                     echo "<td class='text-center
-                    '><span style='width:50px' class='btn btn-danger'>".Config('constants.active')[$val->active]."</span></td>";
-                 }
-                    echo "<td class='text-center'>
-                        <a href='".route('categories.edit',$val->id)."'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i>
+                    '><span class='btn btn-success'>Hiển thị</span></td>";
+                }else{
+                    echo "<td class='text-center
+                    '><span  class='btn btn-danger'>Ẩn</span></td>";
+                }
+                echo "<td class='text-center'>
+                        <a href='".URL::route('categories.edit',[$val->id])."' class='btn btn-success'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i>
                   </a>
-                  <a href='".route('categories.delete',$val->id)."' class='delete-view'><i class='fa fa-times-circle fa-lg'></i></a>
+                  <a href='".URL::route('categories.delete',[$val->id])."' class='btn btn-danger delete-item'><i class='fa fa-times-circle fa-lg'></i></a>
                     </td>";
-                 echo "</tr>";
-              $this->parentTable($data,$val->id,$str."<i class='fa fa-minus' aria-hidden='true'>&nbsp;&nbsp;</i> ");
+                echo "</tr>";
+                self::parentTableCategories($data,$val->id,$str."<i class='fa fa-minus' aria-hidden='true'>&nbsp;&nbsp;</i> ");
             }
             $i++;
         }

@@ -18,7 +18,7 @@ return [
     |
     */
 
-        'view' => 'backend.partials.breadcrumbs',
+        'view' => 'breadcrumbs::bootstrap4',
 
     /*
     |--------------------------------------------------------------------------

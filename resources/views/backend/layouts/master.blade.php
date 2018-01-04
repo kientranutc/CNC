@@ -68,7 +68,9 @@
 		<!-- /breadcrumb-->
 		@yield('breadcrumbs')
 			<!-- /grey-container -->
+
 			<div class="padding-md">
+			@include('backend.layouts.message')
 			@yield('content')
 			</div>
 		</div><!-- /main-container -->
@@ -111,6 +113,23 @@
 			<a class="btn btn-danger logoutConfirm_close">Cancel</a>
 		</div>
 	</div>
+	<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Bạn có muốn xóa không?</h4>
+      </div>
+      <div class="modal-body text-right">
+       <a href="" id="url-modal" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 	@yield('modal')
 
     <!-- Le javascript
@@ -153,6 +172,7 @@
 
 	<!-- Endless -->
 	<script src="{{asset('backend/js/endless/endless.js')}}"></script>
+	<script src="{{asset('backend/js/modal/main.js')}}"></script>
 	@yield('script')
   </body>
 </html>
