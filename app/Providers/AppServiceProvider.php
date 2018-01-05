@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $repositories = [
           'Categories\CategoryRepositoryInterface' => 'Categories\CategoryRepository',
+          'News\NewsRepositoryInterface' => 'News\NewsRepository',
          ];
         foreach ($repositories as $key=>$val){
             $this->app->bind("App\\Repositories\\$key", "App\\Repositories\\$val");

@@ -24,8 +24,10 @@
 
 	<!-- Endless -->
 	<link href="{{asset('backend/css/endless.min.css')}}" rel="stylesheet">
+
 	<link href="{{asset('backend/css/endless-skin.css')}}" rel="stylesheet">
-	@yield('link')
+	<link href="{{asset('backend/style.css')}}" rel="stylesheet">
+	@yield('style')
   </head>
 
   <body class="overflow-hidden">
@@ -130,6 +132,25 @@
 
   </div>
 </div>
+<div id="imageModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<iframe  width="100%" height="550" frameborder="0" src="{{URL::to('/')}}/media/filemanager/dialog.php?type=&field_id=image-input">
+				</iframe>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+			</div>
+		</div>
+
+	</div>
+</div>
 	@yield('modal')
 
     <!-- Le javascript
@@ -138,7 +159,7 @@
 
 	<!-- Jquery -->
 	<script src="{{asset('backend/js/jquery-1.10.2.min.js')}}"></script>
-
+	<script src="{{asset('backend/tinymce/js/tinymce/tinymce.min.js')}}"></script>
 	<!-- Bootstrap -->
     <script src="{{asset('backend/bootstrap/js/bootstrap.js')}}"></script>
 
@@ -154,6 +175,8 @@
 
 	<!-- Sparkline -->
 	<script src="{{asset('backend/js/jquery.sparkline.min.js')}}"></script>
+
+	<script src="{{asset('backend/js/jquery.tagsinput.min.js')}}"></script>
 
 	<!-- Pace -->
 	<script src="{{asset('backend/js/uncompressed/pace.js')}}"></script>

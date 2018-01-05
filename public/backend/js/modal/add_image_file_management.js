@@ -8,8 +8,18 @@ $(document).ready(function(){
      host = host.split('/');
      var url = host[0] + "//" + host[2] + "/";
      
-     $('#image-typesim').on('click', function(event){
+     $('#image-input').on('click', function(event){
          $('#imageModal').modal('show');
+         
+         $('#imageModal').on('hidden.bs.modal', function(e) { 
+             var srcImg = $('#image-input').val();
+             $('#image-input-left').addClass('col-md-6');
+             $('#show-image-input').attr({
+                src:srcImg,
+                alt:srcImg
+             });
+             
+         });
      });
 });
      

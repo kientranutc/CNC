@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('slug')->default('');
             $table->string('image')->default('');
             $table->text('description');
+            $table->integer('category_id');
             $table->integer('viewed');
             $table->tinyInteger('status')->default(1);
             $table->string('tag');

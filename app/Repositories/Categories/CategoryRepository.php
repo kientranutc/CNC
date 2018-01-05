@@ -97,6 +97,12 @@ class CategoryRepository implements  CategoryRepositoryInterface
                 ->where('name', $name)->count();
     }
 
+    public function getCategoryNews()
+    {
+        return Categories::where('category_type',2)
+        ->get()->toArray();
+    }
+
 
 }
 ?>

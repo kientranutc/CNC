@@ -1,8 +1,8 @@
 @extends('backend.layouts.master')
 @section('title')
-Danh mục
+Sửa danh mục
 @endsection
-@section('breadcrumbs', Breadcrumbs::render('categories-create'))
+@section('breadcrumbs', Breadcrumbs::render('categories-update'))
 @section('content')
 <div class="panel panel-default">
 							<form class="no-margin" action="{{URL::route('categories.edit',[$findCategory->id])}}" method="post" id="formValidate1" data-validate="parsley" novalidate>

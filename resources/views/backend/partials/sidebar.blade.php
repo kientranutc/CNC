@@ -32,6 +32,7 @@
 						</li>
 						<li class="{{ (Route::currentRouteName()== 'categories.index')
 									|| (Route::currentRouteName()== 'categories.create')
+									|| (Route::currentRouteName()== 'categories.update')
 									?'active':''}}">
 							<a href="{{URL::route('categories.index')}}">
 								<span class="menu-icon">
@@ -39,6 +40,20 @@
 								</span>
 								<span class="text">
 									Danh mục
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="{{ (Route::currentRouteName()== 'news.index')
+									|| (Route::currentRouteName()== 'news.create')
+									|| (Route::currentRouteName()== 'news.edit')
+									?'active':''}}">
+							<a href="{{URL::route('news.index')}}">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i>
+								</span>
+								<span class="text">
+									Tin tức
 								</span>
 								<span class="menu-hover"></span>
 							</a>

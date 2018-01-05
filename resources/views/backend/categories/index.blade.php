@@ -32,7 +32,6 @@ Danh mục
 						</tbody>
 					</table>
 					<div class="panel-footer clearfix">
-						//paginate
 					</div>
 				</div>
 @endsection

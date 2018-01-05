@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-Danh mục
+Thêm mới danh mục
 @endsection
 @section('breadcrumbs', Breadcrumbs::render('categories-create'))
 @section('content')

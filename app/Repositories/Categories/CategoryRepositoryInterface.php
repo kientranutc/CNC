@@ -17,6 +17,9 @@ interface  CategoryRepositoryInterface
 
   public function checkExistNameCategory($id, $name);
 
+  public function getCategoryNews();
+
+
 }
 
 ?>

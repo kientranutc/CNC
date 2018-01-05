@@ -2,6 +2,7 @@
 namespace App\Support;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
 
 class Helper{
   public static function parent($data,$select,$parent = 0, $str=""){
@@ -22,7 +23,7 @@ class Helper{
     public static function parentMulti($data,$select,$parent = 0, $str="--"){
         foreach ($data as $val ){
             $id = $val["id"];
-            $name = $val["categories"];
+            $name = $val["name"];
             if ($val["parent_id"] == $parent){
                 if ($id == $select) {
                     echo "<option value='$id' selected='selected'>$str $name </option>";
@@ -62,6 +63,20 @@ class Helper{
                self::parentAddMulti($data,$id,$str."--|");
             }
 
+        }
+    }
+    public static function parentFilterMulti($data,$select,$parent = 0, $str=""){
+        foreach ($data as $val ){
+            $id = $val["id"];
+            $name = $val["name"];
+            if ($val["parent_id"] == $parent){
+                if ($id == $select) {
+                    echo "<option value='$id' selected='selected'>$str $name </option>";
+                }else{
+                    echo "<option value='$id'> $str $name</option>";
+                }
+                self::parent ($data,$select,$id,$str."--|");
+            }
         }
     }
 

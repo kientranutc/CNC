@@ -35,4 +35,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}','Backend\CategoryController@processEditForm')->name('categories.edit');
         Route::get('/delete/{id}','Backend\CategoryController@delete')->name('categories.delete');
     });
+    // news
+    Route::prefix('news')->group(function () {
+        Route::get('/','Backend\NewsController@index')->name('news.index');
+        Route::get('/create','Backend\NewsController@createForm')->name('news.create');
+        Route::post('/create','Backend\NewsController@processCreateForm')->name('news.create');
+        Route::get('/update/{id}','Backend\NewsController@editForm')->name('news.edit');
+        Route::post('/update/{id}','Backend\NewsController@processEditForm')->name('news.edit');
+        Route::get('/delete/{id}','Backend\NewsController@delete')->name('news.delete');
+    });
 });
