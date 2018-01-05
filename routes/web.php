@@ -44,4 +44,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}','Backend\NewsController@processEditForm')->name('news.edit');
         Route::get('/delete/{id}','Backend\NewsController@delete')->name('news.delete');
     });
+   //banner
+   Route::prefix('banner')->group(function () {
+      Route::get('/','Backend\BannerController@index')->name('banner.index');
+      Route::get('/create','Backend\BannerController@createForm')->name('banner.create');
+   });
 });

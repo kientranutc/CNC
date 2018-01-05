@@ -37,4 +37,11 @@ Breadcrumbs::register('news-update', function ($breadcrumbs) {
    $breadcrumbs->parent('news');
    $breadcrumbs->push('Sửa','');
 });
+
+//banner
+Breadcrumbs::register('banner', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Banner', route('news.index'));
+});
+
 ?>

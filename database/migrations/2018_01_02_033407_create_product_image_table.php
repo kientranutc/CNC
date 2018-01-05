@@ -17,6 +17,7 @@ class CreateProductImageTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->string('json_image')->default('');
+            $table->tinyInteger('sort')->default(0);
             $table->timestamps();
         });
     }

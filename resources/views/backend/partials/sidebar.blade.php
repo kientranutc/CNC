@@ -58,6 +58,19 @@
 								<span class="menu-hover"></span>
 							</a>
 						</li>
+						<li class="{{ (Route::currentRouteName()== 'banner.index')
+									|| (Route::currentRouteName()== 'banner.create')
+									?'active':''}}">
+							<a href="{{URL::route('banner.index')}}">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i>
+								</span>
+								<span class="text">
+									Banner
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
 						<li class="openable open">
 							<a href="#">
 								<span class="menu-icon">
