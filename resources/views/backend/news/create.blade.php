@@ -77,6 +77,7 @@
 	</form>
 </div>
 @endsection
+
 @section('script')
 	<script src="{{asset('backend/js/taginput/main.js')}}"></script>
 	<script src="{{asset('backend/js/tinymce/main.js')}}"></script>

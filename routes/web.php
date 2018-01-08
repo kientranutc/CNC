@@ -48,5 +48,13 @@ Route::prefix('admin')->group(function () {
    Route::prefix('banner')->group(function () {
       Route::get('/','Backend\BannerController@index')->name('banner.index');
       Route::get('/create','Backend\BannerController@createForm')->name('banner.create');
+      Route::post('/create','Backend\BannerController@processCreateForm')->name('banner.create');
+      Route::get('/update/{id}','Backend\BannerController@editForm')->name('banner.update');
+      Route::post('/update/{id}','Backend\BannerController@processEditForm')->name('banner.update');
+      Route::get('/delete/{id}','Backend\BannerController@delete')->name('banner.delete');
+   });
+       //banner
+   Route::prefix('products')->group(function () {
+       Route::get('/create','Backend\ProductController@createForm')->name('products.create');
    });
 });

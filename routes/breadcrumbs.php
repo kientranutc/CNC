@@ -41,7 +41,14 @@ Breadcrumbs::register('news-update', function ($breadcrumbs) {
 //banner
 Breadcrumbs::register('banner', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Banner', route('news.index'));
+    $breadcrumbs->push('Banner', route('banner.index'));
 });
-
+Breadcrumbs::register('banner-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('banner');
+    $breadcrumbs->push('Thêm mới','');
+});
+Breadcrumbs::register('banner-update', function ($breadcrumbs) {
+   $breadcrumbs->parent('banner');
+   $breadcrumbs->push('sửa','');
+});
 ?>

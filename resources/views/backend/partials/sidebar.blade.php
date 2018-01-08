@@ -60,6 +60,7 @@
 						</li>
 						<li class="{{ (Route::currentRouteName()== 'banner.index')
 									|| (Route::currentRouteName()== 'banner.create')
+									|| (Route::currentRouteName()== 'banner.update')
 									?'active':''}}">
 							<a href="{{URL::route('banner.index')}}">
 								<span class="menu-icon">
@@ -67,6 +68,20 @@
 								</span>
 								<span class="text">
 									Banner
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li class="{{ (Route::currentRouteName()== 'banner.index')
+									|| (Route::currentRouteName()== 'banner.create')
+									|| (Route::currentRouteName()== 'banner.update')
+									?'active':''}}">
+							<a href="{{URL::route('banner.index')}}">
+								<span class="menu-icon">
+									<i class="fa fa-tasks fa-lg"></i>
+								</span>
+								<span class="text">
+									Sản phẩm
 								</span>
 								<span class="menu-hover"></span>
 							</a>

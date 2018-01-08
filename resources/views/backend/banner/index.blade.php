@@ -6,8 +6,8 @@ Banner
 @section('content')
 <div class="panel panel-default table-responsive">
 	<div class="panel-heading">
-		Danh mục
-		<span class="label label-info pull-right">790 Items</span>
+		Banner
+		<span class="label label-info pull-right">{{count($dataBanner)}} banner</span>
 	</div>
 	<div class="panel-body">
 		<div class="row">
@@ -28,6 +28,31 @@ Banner
 					</tr>
 				</thead>
 				<tbody>
+				@forelse($dataBanner as $item)
+					<tr>
+						<td class="text-center" width="5%">{{++$stt}}</td>
+						<td class="text-center" width="20%"><img src="{{$item->image}}" width="100px" height="100px;" alt="{{$item->image}}"></td>
+						<td class="text-center" width="20%"><a href="{{$item->url}}">{{$item->url}}</a></td>
+						<td class="text-center" width="15%">{{$item->sort}}</a></td>
+						<td class="text-center" width="15%">
+							@if($item->status==1)
+								<span class="btn btn-success">Hiển thị</span>
+							@else
+								<span class="btn btn-danger">Ẩn</span>
+							@endif
+						</td>
+						<td class="text-center" width="15%">
+							<a href="{{URL::route('banner.update',[$item->id])}}" class="btn btn-success"><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
+							<a href="{{URL::route('banner.delete',[$item->id])}}" class='btn btn-danger delete-item'><i class='fa fa-times-circle fa-lg'></i></a>
+						</td>
+					</tr>
+				@empty
+				<tr>
+					<td colspan="6" class="text-center">
+						Dữ liệu trống
+					</td>
+				</tr>
+				@endforelse
 				</tbody>
 			</table>
 		<div class="panel-footer clearfix">

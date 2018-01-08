@@ -1,0 +1,39 @@
+.img-banner {
+	cursor: pointer;
+}
+ul.nav.nav-tabs {
+    background: #415160;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #fff;
+    cursor: default;
+    background-color: #394754;
+    border: 0px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-tabs>li.active:before
+{
+	position: absolute;
+	content: "";
+	width:0px;
+    height:0px;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:10px solid #394754; 
+    bottom: -10px;
+    z-index:100;
+    left: 40%;
+}
+.nav>li>a {
+	color: #fff;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+    text-decoration: none;
+    background-color: unset;
+    border: none;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    border: none;
+    border-radius:0px;
+}

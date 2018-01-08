@@ -159,6 +159,9 @@
 
 	<!-- Jquery -->
 	<script src="{{asset('backend/js/jquery-1.10.2.min.js')}}"></script>
+
+	<script src="{{asset('backend/js/jquery.maskedinput.min.js')}}"></script>
+		<script src="{{asset('backend/js/bootstrap-slider.min.js')}}"></script>
 	<script src="{{asset('backend/tinymce/js/tinymce/tinymce.min.js')}}"></script>
 	<!-- Bootstrap -->
     <script src="{{asset('backend/bootstrap/js/bootstrap.js')}}"></script>

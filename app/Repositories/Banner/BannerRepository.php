@@ -5,7 +5,9 @@ class BannerRepository implements  BannerRepositoryInterface
 {
     public function all()
     {
-        return Banner::all();
+        return Banner::orderBy('banner.created_at','DESC')
+                            ->orderBy('banner.updated_at', 'DESC')
+                            ->get();
     }
 
     public function find($id)
@@ -36,7 +38,7 @@ class BannerRepository implements  BannerRepositoryInterface
         } else {
             $banner->status = 1;
         }
-        return $banner->save();
+        $banner->save();
     }
 
     public function update($data, $id)
