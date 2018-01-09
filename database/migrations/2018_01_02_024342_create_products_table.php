@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->default('');
             $table->float('price',15,0)->default(0);
             $table->tinyInteger('sale')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->text('description');
             $table->text('product_detail');
             $table->integer('viewed')->default(0);

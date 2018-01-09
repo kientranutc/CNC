@@ -179,6 +179,8 @@
 	<!-- Sparkline -->
 	<script src="{{asset('backend/js/jquery.sparkline.min.js')}}"></script>
 
+	<script src="{{asset('backend/js/maskmoney/jquery.maskMoney.js')}}"></script>
+
 	<script src="{{asset('backend/js/jquery.tagsinput.min.js')}}"></script>
 
 	<!-- Pace -->

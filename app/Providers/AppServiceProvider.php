@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
           'Categories\CategoryRepositoryInterface' => 'Categories\CategoryRepository',
           'News\NewsRepositoryInterface' => 'News\NewsRepository',
           'Banner\BannerRepositoryInterface' => 'Banner\BannerRepository',
+          'Products\ProductsRepositoryInterface' => 'Products\ProductsRepository',
+          'ProductImage\ProductImageRepositoryInterface' => 'ProductImage\ProductImageRepository',
          ];
         foreach ($repositories as $key=>$val){
             $this->app->bind("App\\Repositories\\$key", "App\\Repositories\\$val");

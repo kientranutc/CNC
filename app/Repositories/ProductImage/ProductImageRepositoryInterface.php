@@ -1,7 +1,7 @@
 <?php
-namespace  App\Repositories\Categories;
+namespace  App\Repositories\ProductImage;
 
-interface  CategoryRepositoryInterface
+interface  ProductImageRepositoryInterface
 {
   public function all();
 
@@ -15,11 +15,6 @@ interface  CategoryRepositoryInterface
 
   public function delete($id);
 
-  public function checkExistNameCategory($id, $name);
-
-  public function getCategoryNews();
-
-  public function getCategoryProducts();
 }
 
 ?>

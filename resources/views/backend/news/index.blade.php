@@ -15,7 +15,7 @@ Tin tức
 								 <input type="hidden" name="limit" value="{{Request::get('limit',10)}}">
                                   <div class="form-group">
                                     <label for="title">Tiêu đề:</label>
-                                    <input type="text" name="title" class="form-control" id="title">
+                                    <input type="text" name="title" value="{{Request::get('title', '')}}" class="form-control" id="title">
                                   </div>
                                   <div class="form-group">
                                     <label for="category_id">  Danh mục:</label>

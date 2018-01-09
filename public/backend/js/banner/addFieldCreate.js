@@ -50,7 +50,7 @@ $(document).ready(function(){
      $('.add_button_product').click(function(){ //Once add button is clicked
          if(x <= maxField){ //Check maximum number of input fields
              x++; //Increment field counter
-             var fieldHtml = '<tr><td class="text-center" width="33%" > <input type="hidden" name="field[image][]" id="img_banner_'+x+'"> <img alt="/backend/img/not_found.png" class="img-banner"  data-count="'+x+'" width="100px" height="100px" id="banner_'+x+'" src="/backend/img/not_found.png"></td> <td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" placeholder="Sắp xếp vị trí" required> <br/> <a href="javascript:void(0);" class="btn btn-danger remove_button" title="Xóa"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a></td></tr>'
+             var fieldHtml = '<tr><td class="text-center" width="33%" > <input type="hidden" name="field[image][]" id="img_banner_'+x+'"> <img alt="/backend/img/not_found.png" class="img-banner"  data-count="'+x+'" width="100px" height="100px" id="banner_'+x+'" src="/backend/img/not_found.png"></td> <td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" placeholder="Sắp xếp vị trí" > <br/> <a href="javascript:void(0);" class="btn btn-danger remove_button" title="Xóa"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a></td></tr>'
              $(wrapper).append(fieldHtml); // Add field html
          }
      });

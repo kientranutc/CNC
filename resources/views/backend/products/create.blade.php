@@ -1,15 +1,15 @@
 @extends('backend.layouts.master')
 @section('title')
-Tin tức
+Thêm mới sản phẩm
 @endsection
 @section('style')
 <link href="{{asset('backend/css/jquery.tagsinput.css')}}" rel="stylesheet"/>
 @endsection
-@section('breadcrumbs', Breadcrumbs::render('news'))
+@section('breadcrumbs', Breadcrumbs::render('product-create'))
 @section('content')
-<form action="" method="get">
+<form action="{{URL::route('products.create')}}" method="post">
 <div class="panel panel-default">
-<div class="panel">
+<div class="panel-body">
 	 		<div class="row">
 
 	 			<div class="col-md-6 col-md-offset-6 text-right">
@@ -25,19 +25,19 @@ Tin tức
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
    <div class="panel panel-default">
-   <br>
+   			<br>
 		{{csrf_field()}}
 		<div class="panel-heading"></div>
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-6">
 					<div
-						class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
-						<label for="title" class="control-label">Tiêu đề</label> <input
-							type="text" placeholder="Tiêu đề" name="title" id="title"
-							value="{{old('title')}}" class="form-control input-sm"
-							required="required">
-						<p class="text-danger">{{$errors->first('title')}}</p>
+						class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+						<label for="name" class="control-label">Tên sản phẩm</label> <input
+							type="text" placeholder="Tên sản phẩm" name="name" id="name"
+							value="{{old('name')}}" class="form-control input-sm"
+							>
+						<p class="text-danger">{{$errors->first('name')}}</p>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -59,22 +59,22 @@ Tin tức
 				<div class="col-md-6">
 					<div
 						class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-						<label for="title" class="control-label">Giá:</label> <input
+						<label for="title" class="control-label">Giá</label> <input
 							type="text" placeholder="Giá." name="price"
-							value="{{old('title')}}" class="form-control input-sm price-product"
-							required="required">
-						<p class="text-danger">{{$errors->first('title')}}</p>
+							value="{{old('price')}}" class="form-control input-sm price-product"
+							>
+						<p class="text-danger">{{$errors->first('price')}}</p>
 					</div>
 					<!-- /form-group -->
 				</div>
 				<div class="col-md-6">
 					<div
-						class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-						<label for="title" class="control-label">Giảm giá</label> <input
-							type="text" placeholder="Giá." name="price"
-							value="{{old('title')}}" class="form-control input-sm price-product"
-							required="required">
-						<p class="text-danger">{{$errors->first('title')}}</p>
+						class="form-group {{ $errors->has('sale') ? ' has-error' : '' }}">
+						<label for="sale" class="control-label">Giảm giá</label> <input
+							type="text" placeholder="Giảm giá" name="sale"
+							value="{{old('sale')}}" class="form-control input-sm sale-product"
+							>
+						<p class="text-danger">{{$errors->first('sale')}}</p>
 					</div>
 					<!-- /form-group -->
 				</div>
@@ -86,7 +86,7 @@ Tin tức
 						<label for="category_id" class="control-label">Danh mục</label>
 						<select class="form-control" name="category_id" id="category_id">
 							<option value="-1">--Chọn--</option>
-
+							<?php $helper::parentAddMulti($categoryproducts) ?>
 						</select>
 						<p class="text-danger">{{$errors->first('category_id')}}</p>
 					</div>
@@ -103,10 +103,6 @@ Tin tức
 						</div>
 				</div>
 			</div>
-			<div class="form-group {{($errors->has('description'))?"has-error":""}}">
-				<label class="control-label">Nội dung</label>
-				<textarea  rows="" class="form-control input-sm description-news" cols="" name="description">{{old('description')}}</textarea>
-			</div>
 			<div class="form-group {{($errors->has('tag'))?"has-error":""}}">
 				<label class="control-label" for="tag">Tag</label>
 				<input name="tag" id="tag" class="tag-input" value="{{old('tag')}}" placeholder="Thêm tag">
@@ -119,12 +115,12 @@ Tin tức
     <div class="panel panel-default">
 	<div class="panel-body">
     	<div class="form-group {{($errors->has('description'))?"has-error":""}}">
-				<label class="control-label">Nội dung</label>
+				<label class="control-label">Mô tả</label>
 				<textarea  rows="" class="form-control input-sm description-news" cols="" name="description">{{old('description')}}</textarea>
 		</div>
-		<div class="form-group {{($errors->has('description'))?"has-error":""}}">
-				<label class="control-label">Nội dung</label>
-				<textarea  rows="" class="form-control input-sm description-news" cols="" name="description">{{old('description')}}</textarea>
+		<div class="form-group {{($errors->has('product_detail'))?"has-error":""}}">
+				<label class="control-label">Nội dung chi tiết</label>
+				<textarea  rows="" class="form-control input-sm description-news" cols="" name="product_detail">{{old('product_detail')}}</textarea>
 		</div>
     </div>
     </div>
@@ -132,7 +128,7 @@ Tin tức
   <div id="menu2" class="tab-pane fade">
       <div class="panel panel-default">
       <input type="hidden" value="" id="hidden-image">
-		<div class="panel">
+		<div class="panel-body">
 	 		<div class="row">
 	 			<div class="col-md-6">
 	 			 <a href="javascript:void(0);" class="btn btn-danger add_button_product " title="Thêm mới"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></a>
@@ -143,13 +139,12 @@ Tin tức
 			<div class="panel">
 		<div class="row">
 		</div>
-
 			{{csrf_field()}}
 		<table class="table table-bordered">
         <thead>
           <tr>
-            <th class="text-center">Image</th>
-            <th class="text-center">Sort</th>
+            <th class="text-center">Ảnh sản phẩm</th>
+            <th class="text-center">Vị trí</th>
           </tr>
         </thead>
         <tbody class="field_wrapper">
@@ -158,7 +153,7 @@ Tin tức
           	<input type="hidden" id="img_banner_1" name="field[image][]" value="{{asset('backend/img/not_found.png')}}">
           	<img alt="{{asset('backend/img/not_found.png')}}" id="banner_1" class="img-banner" data-count="1"  data width="100px" height="100px" src="{{asset('backend/img/not_found.png')}}">
           	</td>
-          	<td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" placeholder="Sắp xếp vị trí" required></td>
+          	<td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" placeholder="Sắp xếp vị trí"></td>
           </tr>
         </tbody>
       </table>

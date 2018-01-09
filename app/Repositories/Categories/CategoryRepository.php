@@ -102,6 +102,11 @@ class CategoryRepository implements  CategoryRepositoryInterface
         return Categories::where('category_type',2)
         ->get()->toArray();
     }
+    public function getCategoryProducts()
+    {
+        return Categories::where('category_type',1)
+        ->get()->toArray();
+    }
 
 
 }

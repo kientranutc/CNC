@@ -1,5 +1,5 @@
 <?php
-
+//-----------------------backend-----------------------------
 Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push('Home', route('dashboard.index'));
 });
@@ -51,4 +51,18 @@ Breadcrumbs::register('banner-update', function ($breadcrumbs) {
    $breadcrumbs->parent('banner');
    $breadcrumbs->push('sửa','');
 });
+//products
+Breadcrumbs::register('products', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Sản phẩm', route('products.index'));
+});
+Breadcrumbs::register('product-create', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push('Thêm mới','');
+});
+Breadcrumbs::register('product-update', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push('sửa','');
+});
+
 ?>
