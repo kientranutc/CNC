@@ -37,7 +37,6 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     public function update($data, $id)
     {
         $productImage = ProductImage::find($id);
-        if ($productImage) {
             if (isset($data['product_id'])) {
                 $productImage->product_id = $data['product_id'];
             } else {
@@ -53,10 +52,8 @@ class ProductImageRepository implements ProductImageRepositoryInterface
             } else {
                 $productImage->sort = 0;
             }
-            return $productImage->save();
-        } else {
-            return false;
-        }
+            $productImage->save();
+
     }
 
     public function findAttribute($att, $name)
@@ -72,6 +69,16 @@ class ProductImageRepository implements ProductImageRepositoryInterface
              $item->delete();
             }
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteItem($id)
+    {
+        $productImage = ProductImage::find($id);
+        if ($productImage) {
+            return $productImage->delete();
         } else {
             return false;
         }

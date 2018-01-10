@@ -7,11 +7,10 @@ Thêm mới sản phẩm
 @endsection
 @section('breadcrumbs', Breadcrumbs::render('product-update'))
 @section('content')
-<form action="{{URL::route('products.create')}}" method="post">
+<form action="{{URL::route('products.update',[$editProduct->id])}}" method="post">
 <div class="panel panel-default">
 <div class="panel-body">
 	 		<div class="row">
-
 	 			<div class="col-md-6 col-md-offset-6 text-right">
 	 			 <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 	 			</div>
@@ -86,7 +85,7 @@ Thêm mới sản phẩm
 						<label for="category_id" class="control-label">Danh mục</label>
 						<select class="form-control" name="category_id" id="category_id">
 							<option value="-1">--Chọn--</option>
-
+							<?php $helper::parentFilterMulti($categoryproducts,$editProduct->category_id)?>
 						</select>
 						<p class="text-danger">{{$errors->first('category_id')}}</p>
 					</div>
@@ -154,10 +153,12 @@ Thêm mới sản phẩm
         @forelse($listImageForProduct as $item)
           <tr>
           	<td class="text-center" width="33%">
+          	<input type="hidden" name="field[id][]" value="{{$item->id}}">
+          	<input type="hidden" name="field[product_id][]" value="{{$item->product_id}}">
           	<input type="hidden" id="img_banner_{{$i}}" name="field[image][]" value="{{(!empty($item->image))?$item->image:'backend/img/not_found.png'}}">
           	<img alt="{{(!empty($item->image))?$item->image:'/backend/img/not_found.png'}}" id="banner_{{$i}}" class="img-banner" data-count="{{$i}}"   width="100px" height="100px" src="{{(!empty($item->image))?$item->image:'/backend/img/not_found.png'}}">
           	</td>
-          	<td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" value="{{$item->sort}}" placeholder="Sắp xếp vị trí"><a href="javascript:void(0);" class="btn btn-danger remove_button" title="Xóa"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a></td>
+          	<td class="text-right" width="33%"><input class="form-control" type="number" name="field[sort][]" value="{{$item->sort}}" placeholder="Sắp xếp vị trí"><a href="javascript:void(0);" class="btn btn-danger remove_buttons" data-id="{{$item->id}}" title="Xóa"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a></td>
           </tr>
             <?php
             $total+=$i;
@@ -166,7 +167,6 @@ Thêm mới sản phẩm
         <tr>
         	<td colspan="2" class="text-center">Dữ liệu trống</td>
         </tr>
-
         @endforelse
         </tbody>
       </table>
@@ -204,5 +204,5 @@ Thêm mới sản phẩm
 	<script src="{{asset('backend/js/tinymce/main.js')}}"></script>
 	<script src="{{asset('backend/js/products/format_price.js')}}"></script>
 	<script src="{{asset('backend/js/modal/add_image_file_management.js')}}"></script>
-	<script type="text/javascript" src="{{asset('backend/js/banner/addFieldCreate.js')}}"></script>
+	<script type="text/javascript" src="{{asset('backend/js/products/add_field_more.js')}}"></script>
 @endsection

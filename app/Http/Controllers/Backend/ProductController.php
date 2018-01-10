@@ -11,6 +11,7 @@ use App\Repositories\ProductImage\ProductImageRepositoryInterface;
 use App\Support\Helper;
 use App\Repositories\Categories\CategoryRepositoryInterface;
 use App\Http\Requests\CreateProductsRequest;
+use App\Http\Requests\UpdateProductRequest;
 class ProductController extends Controller
 {
     public function __construct(ProductsRepositoryInterface $products,
@@ -60,7 +61,28 @@ class ProductController extends Controller
         $categoryproducts = $this->categories->getCategoryProducts();
         $editProduct = $this->products->find($id);
         $listImageForProduct = $this->productImage->findAttribute('product_id', $id);
-        return view('backend.products.update', compact('editProduct', 'listImageForProduct'));
+        return view('backend.products.update', compact('editProduct', 'listImageForProduct', 'categoryproducts'));
+    }
+    public function processEditForm(UpdateProductRequest $request, $id)
+    {
+        $productRequest = $request->only(['name', 'image', 'category_id','price', 'sale', 'tag', 'status', 'description', 'product_detail']);
+        $productRequest['price']=join('',explode(',',$productRequest['price']));
+        $productId = $this->products->update($productRequest, $id);
+        $productImageRequest = $request->only(['field']);
+        for ($i=0; $i<count($productImageRequest['field']['image']);$i++) {
+            if  ($productImageRequest['field']['id'][$i]=='') {
+                $productImageRequest['product_id'] = $id;
+                $productImageRequest['image'] = $productImageRequest['field']['image'][$i];
+                $productImageRequest['sort'] = $productImageRequest['field']['sort'][$i];
+                $this->productImage->save($productImageRequest);
+            } else {
+                $productImageRequest['product_id'] = $id;
+                $productImageRequest['image'] = $productImageRequest['field']['image'][$i];
+                $productImageRequest['sort'] = $productImageRequest['field']['sort'][$i];
+                $this->productImage->update($productImageRequest, $productImageRequest['field']['id'][$i]);
+            }
+        }
+        return Redirect::route('products.index')->withSuccess('Cập nhật sản phẩm thành công.');
     }
     public function delete($id)
     {
@@ -72,6 +94,15 @@ class ProductController extends Controller
             }
         } else {
             return Redirect::route('products.index')->withSuccess('Lỗi xóa sản phẩm.');
+        }
+    }
+
+    public function deleteImageItem($id)
+    {
+        if ($this->productImage->deleteItem($id)) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 }

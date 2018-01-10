@@ -20,7 +20,7 @@ class Helper{
         }
     }
     //
-    public static function parentMulti($data,$select,$parent = 0, $str="--"){
+    public static function parentMulti($data,$select,$parent = 0, $str=""){
         foreach ($data as $val ){
             $id = $val["id"];
             $name = $val["name"];
@@ -30,7 +30,7 @@ class Helper{
                 }else{
                     echo "<option value='$id'> $str $name</option>";
                 }
-                $this->parentMulti ($data,$select,$id,$str."--");
+                self::parentMulti ($data,$select,$id,$str."--|");
             }
         }
     }

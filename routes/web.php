@@ -52,12 +52,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}','Backend\BannerController@processEditForm')->name('banner.update');
         Route::get('/delete/{id}','Backend\BannerController@delete')->name('banner.delete');
    });
-       //banner
+   //banner
    Route::prefix('products')->group(function () {
         Route::get('/','Backend\ProductController@index')->name('products.index');
         Route::get('/create','Backend\ProductController@createForm')->name('products.create');
         Route::post('/create','Backend\ProductController@processCreateForm')->name('products.create');
         Route::get('/update/{id}','Backend\ProductController@editForm')->name('products.update');
+        Route::post('/update/{id}','Backend\ProductController@processEditForm')->name('products.update');
         Route::get('/delete/{id}','Backend\ProductController@delete')->name('products.delete');
+        Route::get('/delete-item/{id}','Backend\ProductController@deleteImageItem')->name('products.delete-item');
    });
 });

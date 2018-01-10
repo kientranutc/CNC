@@ -15,6 +15,7 @@ interface  ProductImageRepositoryInterface
 
   public function delete($id);
 
+  public function deleteItem($id);
 }
 
 ?>

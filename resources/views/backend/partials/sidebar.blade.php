@@ -72,11 +72,11 @@
 								<span class="menu-hover"></span>
 							</a>
 						</li>
-						<li class="{{ (Route::currentRouteName()== 'banner.index')
-									|| (Route::currentRouteName()== 'banner.create')
-									|| (Route::currentRouteName()== 'banner.update')
+						<li class="{{ (Route::currentRouteName()== 'products.index')
+									||(Route::currentRouteName()== 'products.create')
+									||(Route::currentRouteName()== 'products.update')
 									?'active':''}}">
-							<a href="{{URL::route('banner.index')}}">
+							<a href="{{URL::route('products.index')}}">
 								<span class="menu-icon">
 									<i class="fa fa-tasks fa-lg"></i>
 								</span>
